@@ -1,4 +1,4 @@
-import 'package:crm_app/core/model.dart';
+import '../core/model.dart';
 
 abstract class Provider {
   // Load Model from network.

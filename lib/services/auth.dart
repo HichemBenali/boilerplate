@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:crm_app/config/app.dart';
-import 'package:crm_app/core/database.dart';
-import 'package:crm_app/core/logger.dart';
-import 'package:crm_app/core/storage.dart';
+import '../config/app.dart';
+import '../core/database.dart';
+import '../core/logger.dart';
+import '../core/storage.dart';
 import 'package:dio/dio.dart';
 
 class AuthService {
@@ -27,7 +27,7 @@ class AuthService {
     var res;
     Log.verbose("[AuthService] attempting login.");
     try {
-      res = await Dio().post(SERVER + "/api/login", data: {
+      res = await Dio().post(SERVER + "/login", data: {
         "email": username,
         "password": password,
       });
@@ -41,7 +41,7 @@ class AuthService {
     } catch (error) {
       if (error is DioError) {
         if (error.response?.statusCode == 401) {
-          throw ("Veuillez verifier vos identifiants.");
+          throw ("Unauthorized.");
         }
       }
       Log.wtf("[AuthService]", error);
@@ -54,8 +54,6 @@ class AuthService {
     username = "";
     token = "";
     await StorageDriver().write("USER_TOKEN", "");
-    await StorageDriver().write("USER_NAME", "");
-    await StorageDriver().write("GROUPS_LAST_UPDATED", "");
     await DBProvider.destroy();
     authenticated = false;
 

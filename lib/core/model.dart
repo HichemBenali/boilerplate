@@ -1,20 +1,21 @@
 import 'dart:convert';
 
 abstract class Model {
-  String name;
+  // Api entity id;
   String id;
-  String date;
+
+  // Unique id for offline operations
   String hash;
 
   Model();
-  // Load from API Map
+
+  // Load Model from Map
   Model.load();
 
-  bool isValid() {
-    return true;
-  }
-
+  // Export model to map
   Map<String, dynamic> getData();
+
+  // Export model to json
   String toJson() {
     return jsonEncode(getData());
   }
