@@ -7,5 +7,6 @@ A basic boilerplate for flutter apps.
 Clone this repo.
 then
 ```sh
+$ git clone https://github.com/HichemBenali/boilerplate
 $ flutter pub get
 ```
