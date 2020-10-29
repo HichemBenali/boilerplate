@@ -1,5 +1,5 @@
-import './views/home.dart';
+import './views/splashscreen.dart';
 
 var routes = {
-  "/": (context) => HomePage(),
+  "/": (context) => SplashScreen(),
 };
